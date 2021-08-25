@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Filters } from "./components/Filters";
 import { Input } from "./components/Input";
 import { Menu } from "./components/Menu";
 import { RecipeCard } from "./components/RecipeCard";
@@ -33,6 +34,14 @@ function App() {
     setQuery(searchQueryTemp);
   };
 
+  const filterLogic = event => {
+    event.target.classList.toggle('active-filter')
+    const li = event.target
+    if(li.classList.contains('active-filter')){
+      setQuery(li.innerText)
+    }
+  }
+
   return (
     <Container>
       <Header>
@@ -42,10 +51,12 @@ function App() {
           <Input
             type="text"
             name="searchQueryTemp"
-            placeholder="Search"
+            placeholder="Search recipes"
             onChange={handleChange}
           />
         </form>
+
+        <Filters filterLogic={filterLogic}/>
       </Header>
  
       <RecipesWrapper>
