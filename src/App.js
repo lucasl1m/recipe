@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Form } from "./components/Form";
 import { RecipeCard } from "./components/RecipeCard";
+import { Container, RecipesWrapper } from "./style";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -31,13 +33,11 @@ function App() {
   };
 
   return (
-    <div>
-      <form onSubmit={submitForm}>
-        <input type="text" name="searchQueryTemp" onChange={handleChange} />
-        <button>Search</button>
-      </form>
+    <Container>
+
+      <Form onSubmit={submitForm} onChange={handleChange}/>
       
-      <div>
+      <RecipesWrapper>
         {recipes.map((recipe, index) => (
           <RecipeCard 
           key={index}
@@ -47,8 +47,8 @@ function App() {
           ingredients={recipe.recipe.ingredients}
           />
         ))}
-      </div>
-    </div>
+      </RecipesWrapper>
+    </Container>
   );
 }
 

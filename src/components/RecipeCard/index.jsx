@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  CaloriesWrapper,
   Container,
   ImageWrapper,
   Ingredient,
@@ -18,7 +19,10 @@ export function RecipeCard({ title, calories, image, ingredients }) {
         <img src={image} alt="" />
       </ImageWrapper>
 
-      <Label>Calories: <span>{calories}</span> Kcal</Label>
+      <CaloriesWrapper>
+        <Label>Calories: </Label>
+        <span>{calories} Kcal</span> 
+      </CaloriesWrapper>
 
       <IngredientsContent>
         <Label>Ingredients</Label>
