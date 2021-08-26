@@ -3,7 +3,7 @@ import { Filters } from "./components/Filters";
 import { Input } from "./components/Input";
 import { RecipeCard } from "./components/RecipeCard";
 import { Container, Header, RecipesWrapper, Title } from "./style";
-import './index'
+import "./index";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -19,9 +19,10 @@ function App() {
       fetch(API_URI).then((response) =>
         response.json().then((data) => {
           setRecipes(data.hits);
-          console.log(data);
         })
       );
+    } else {
+      setRecipes([]);
     }
   }, [query]);
 
@@ -34,18 +35,20 @@ function App() {
     setQuery(searchQueryTemp);
   };
 
-  const filterLogic = event => {
-    event.target.classList.toggle('active-filter')
-    const li = event.target
-    if(li.classList.contains('active-filter')){
-      setQuery(li.innerText)
+  const filterLogic = (event) => {
+    event.target.classList.toggle("active-filter");
+    const li = event.target;
+    if (li.classList.contains("active-filter")) {
+      setQuery(li.innerText);
+    } else {
+      setQuery("");
     }
-  }
+  };
 
   return (
     <Container>
       <Header>
-         <Title>Recipes Finder</Title>
+        <Title>Recipes Finder</Title>
         <form onSubmit={submitForm}>
           <Input
             type="text"
@@ -55,19 +58,25 @@ function App() {
           />
         </form>
 
-        <Filters filterLogic={filterLogic}/>
+        <Filters filterLogic={filterLogic} />
       </Header>
- 
+
       <RecipesWrapper>
-        {recipes.map((recipe, index) => (
-          <RecipeCard
-            key={index}
-            title={recipe.recipe.label}
-            calories={recipe.recipe.calories}
-            image={recipe.recipe.image}
-            ingredients={recipe.recipe.ingredients}
-          />
-        ))}
+        {recipes.length == 0 ? (
+          <p style={{ display: `flex`, flexDirection: `column`, alignItems:`center` }}>
+            <strong>No recipe found</strong> Please enter a valid recipe or select one of the filters
+          </p>
+        ) : (
+          recipes.map((recipe, index) => (
+            <RecipeCard
+              key={index}
+              title={recipe.recipe.label}
+              calories={recipe.recipe.calories}
+              image={recipe.recipe.image}
+              ingredients={recipe.recipe.ingredients}
+            />
+          ))
+        )}
       </RecipesWrapper>
     </Container>
   );

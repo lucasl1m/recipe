@@ -1,25 +1,45 @@
 import styled from "styled-components";
+import '../../index.css';
+
 
 export const Container = styled.div`
     display: flex;
     width: 224px;
     flex-direction: column;
-    box-shadow: 0px 4px 16px 0px rgba(92, 92, 92, 0.15);
-    border-radius: 16px;
+    box-shadow: 0px 4px 16px 4px rgba(92, 92, 92, 0.15);
+    border-radius: 24px;
+    margin-top: 16px;
     padding: 24px;
     height: 100%;
+    transition: all 0.4s ease;
+    transform: translateY(0)
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-0.5rem)
+    }
 `
 
-export const RecipeName = styled.h2`
+export const ImageWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Dancing Script'
     width: auto;
     height: 224px;
-    color: #ffff;
     margin: 0;
     border-radius: 16px;
+`
+export const Name = styled.p`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: rgba(0,0,0,0.5);
+    border-radius: 16px;
+    color: #ffff;
+    font-family: 'Inter', sans-serif;
     font-size: 1.25rem;
     font-weight: bold;
     text-align: center;

@@ -30,7 +30,12 @@ export const Container = styled.div`
 
             transition: all 0.2s ease;
             cursor: pointer;
-
+            
+            &:hover {
+                    background: #6495ED;
+                    color: #fff;
+                    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+                }
         }
     }
 `

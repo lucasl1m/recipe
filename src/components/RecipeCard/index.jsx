@@ -2,23 +2,24 @@ import React from "react";
 import {
   CaloriesWrapper,
   Container,
-  ImageWrapper,
   Ingredient,
   IngredientsContent,
   Label,
-  RecipeName,
+  Name,
+  ImageWrapper,
 } from "./styles";
 
 export function RecipeCard({ title, calories, image, ingredients }) {
   return (
     <Container>
-      <RecipeName
+      <ImageWrapper
         style={{
-          backgroundImage: `url(${image})`,
+          background: `url(${image})`,
+          backgroundSize: `cover`,
         }}
       >
-        {title}
-      </RecipeName>
+        <Name>{title}</Name>
+      </ImageWrapper>
 
       <CaloriesWrapper>
         <Label>Calories: </Label>

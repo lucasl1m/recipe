@@ -4,10 +4,11 @@ import './index.css';
 export const Container = styled.div`
     display: grid;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     width: auto;
     overflow: auto;
-    margin: 24px 32px;
+    margin: 24px;
 
     & > form {
         display: flex;
