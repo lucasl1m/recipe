@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Input } from "./components/Input";
-import { Menu } from "./components/Menu";
+import { Form } from "./components/Form";
 import { RecipeCard } from "./components/RecipeCard";
-import { Container, Header, RecipesWrapper, Title } from "./style";
+import { Container, RecipesWrapper } from "./style";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -17,15 +16,15 @@ function App() {
     if (query.length > 0) {
       fetch(API_URI).then((response) =>
         response.json().then((data) => {
-          setRecipes(data.hits);
-          console.log(data);
-        })
-      );
+        setRecipes(data.hits)
+        console.log(data)
+        }))
     }
   }, [query]);
 
   const handleChange = (event) => {
     setSearchQueryTemp(event.target.value);
+    console.log(searchQueryTemp);
   };
 
   const submitForm = (event) => {
@@ -35,27 +34,17 @@ function App() {
 
   return (
     <Container>
-      <Header>
-        <Menu />
-        <Title>Recipes Finder</Title>
-        <form onSubmit={submitForm}>
-          <Input
-            type="text"
-            name="searchQueryTemp"
-            placeholder="Search"
-            onChange={handleChange}
-          />
-        </form>
-      </Header>
- 
+
+      <Form onSubmit={submitForm} onChange={handleChange}/>
+      
       <RecipesWrapper>
         {recipes.map((recipe, index) => (
-          <RecipeCard
-            key={index}
-            title={recipe.recipe.label}
-            calories={recipe.recipe.calories}
-            image={recipe.recipe.image}
-            ingredients={recipe.recipe.ingredients}
+          <RecipeCard 
+          key={index}
+          title={recipe.recipe.label} 
+          calories={recipe.recipe.calories}
+          image={recipe.recipe.image}
+          ingredients={recipe.recipe.ingredients}
           />
         ))}
       </RecipesWrapper>

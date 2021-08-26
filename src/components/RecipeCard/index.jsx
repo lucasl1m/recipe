@@ -5,6 +5,7 @@ import {
   ImageWrapper,
   Ingredient,
   IngredientsContent,
+  IngredientsWrapper,
   Label,
   RecipeName,
 } from "./styles";
@@ -12,9 +13,9 @@ import {
 export function RecipeCard({ title, calories, image, ingredients }) {
   return (
     <Container>
+      <RecipeName>{title}</RecipeName>
 
       <ImageWrapper>
-        <RecipeName>{title}</RecipeName>
         <img src={image} alt="" />
       </ImageWrapper>
 
@@ -25,11 +26,13 @@ export function RecipeCard({ title, calories, image, ingredients }) {
 
       <IngredientsContent>
         <Label>Ingredients</Label>
+        <IngredientsWrapper>
           {ingredients.map((ingridient, index) => (
             <Ingredient key={index}>
               {ingridient.text}
             </Ingredient>
           ))}
+        </IngredientsWrapper>
       </IngredientsContent>
     </Container>
   );
