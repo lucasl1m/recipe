@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import './index.css';
 
 export const Container = styled.div`
     display: grid;
@@ -26,8 +27,9 @@ export const Header = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 40vh;
+    height: 50vh;
 `
 
 export const RecipesWrapper = styled.div`
@@ -41,7 +43,9 @@ export const RecipesWrapper = styled.div`
 `
 
 export const Title = styled.h1`
-    font-size: 6vw;
+    font-size: 8vw;
+    font-family: 'Dancing Script';
+    font-weight: bold;
     text-align: center;
-    margin: 0px 0px 24px 0px;
+    margin: 0px 0px 32px 0px;
 `

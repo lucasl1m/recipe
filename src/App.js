@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Filters } from "./components/Filters";
 import { Input } from "./components/Input";
-import { Menu } from "./components/Menu";
 import { RecipeCard } from "./components/RecipeCard";
 import { Container, Header, RecipesWrapper, Title } from "./style";
+import './index'
 
 function App() {
   const [query, setQuery] = useState("");
@@ -45,8 +45,7 @@ function App() {
   return (
     <Container>
       <Header>
-        <Menu />
-        <Title>Recipes Finder</Title>
+         <Title>Recipes Finder</Title>
         <form onSubmit={submitForm}>
           <Input
             type="text"
